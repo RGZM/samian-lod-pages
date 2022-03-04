@@ -1,0 +1,298 @@
+/* atom sass-autocompile https://atom.io/packages/sass-autocompile */
+/*@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");*/
+@font-face {
+    font-family: "Cairo", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: white;
+    height: 100%;
+    min-height: 100%;
+    font-family: "Cairo", sans-serif !important;
+}
+
+.label-green {
+    background-color: #2b597d;
+}
+
+.label-greenlight {
+    background-color: #349660;
+}
+
+.thumbnail {
+    /*max-height: 300px !important;*/
+    height: 100px !important;
+    max-width: 300px !important;
+}
+
+.thumbnail-t {
+    background-color: transparent !important;
+}
+
+.box-resultkacheln {
+    height: 195px !important;
+}
+
+.panel-object-property {
+    background-color: rgba(43, 89, 125, .9) !important;
+}
+
+.panel-object-subproperty {
+    background-color: rgba(24, 68, 44, 0.9) !important;
+}
+
+.panel-feature-property {
+    background-color: rgba(52, 150, 96, 0.9) !important;
+}
+
+.panel-external-property {
+    background-color: rgba(63, 0, 31, 0.9) !important;
+}
+
+.panel-group-accordion {
+    float: left !important;
+    width: 100% !important;
+}
+
+.panel-title-header {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: 700;
+}
+
+.panel-body-content {
+    padding: 5px !important;
+    margin: 0px !important;
+}
+
+a.accordion-toggle {
+    text-decoration: none;
+}
+
+.panel-heading:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.panel-item {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.panel-item2 {
+    margin: 0px;
+    cursor: pointer;
+}
+
+#div-keys {
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    border: 0px dotted rgba(43, 89, 125, 0.9);
+    margin-bottom: 0px;
+}
+
+div.deletekey:hover {
+    cursor: pointer;
+    background-color: rgba(163, 57, 63, 0.9);
+}
+
+#div-count {
+    float: left;
+    width: 100%;
+    height: auto;
+    border: none;
+    margin-bottom: 0px;
+}
+
+#filter {
+    float: left;
+    min-height: 500px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 20%;
+    border: 1px dotted white;
+}
+
+#header {
+    float: left;
+    height: 50px;
+    margin-bottom: 20px;
+    /*background-color: rgba(43, 89, 125, 0.9);*/
+    background: linear-gradient(to right, #058b8c, rgba(43, 89, 125, 0.9));
+    width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#header_pt1 {
+    float: left;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#header_pt2 {
+    float: left;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#header_pt3 {
+    float: left;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#header_pt1_r {
+    float: right;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+#header_pt2_r {
+    float: right;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 17px;
+}
+
+#header_pt3_r {
+    float: right;
+    color: white;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 17px;
+}
+
+#header_pt3_r:hover {
+    background-color: #244b6a;
+    /* https://www.colorhexa.com/244b6a */
+}
+
+#span-count {
+    clear: both;
+    margin: 0px;
+    font-variant: small-caps !important;
+}
+
+#content {
+    float: left;
+    height: auto;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 80%;
+    border: 1px dotted white;
+}
+
+#footer {
+    float: left;
+    height: 90px;
+    background-color: rgba(226, 226, 226, 0.9);
+    width: 100%;
+}
+
+#wrapper {
+    float: left;
+    position: absolute;
+    top: 55px !important;
+    width: 100%;
+    z-index: 50;
+}
+
+.box-object {
+    border: 1px dotted #2b597d;
+    background-color: rgba(43, 89, 125, 0.9);
+    color: white;
+}
+
+#span-count {
+    color: rgba(43, 89, 125, .9);
+    margin-top: -10px;
+    margin-bottom: 10px;
+    float: left;
+    width: 70%;
+}
+
+#span-loading {
+    color: rgba(139, 0, 0, 0.9);
+    margin-top: -10px;
+    margin-bottom: 10px;
+    float: left;
+    width: 30%;
+    font-variant: small-caps;
+    font-size: 18px;
+}
+
+.heading {
+    color: rgba(43, 89, 125, .9) !important;
+    font-size: 12px;
+    font-variant: small-caps !important;
+    height: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    float: left;
+    width: 100%;
+}
+
+.box-header-div {
+    font-family: "Cairo", sans-serif !important;
+}
+
+.list-resultkacheln {
+    width: calc(100% - 10px);
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0px !important;
+    font-size: 14px;
+    color: #256a44;
+    line-height: 2.0em;
+    height: 235px;
+    border-bottom: 1px dotted #256a44;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 55px !important;
+}
+
+div.list-resultkacheln:hover {
+    filter: brightness(95%);
+    cursor: pointer;
+}

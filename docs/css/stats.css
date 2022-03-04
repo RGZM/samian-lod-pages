@@ -1,0 +1,50 @@
+@import 'https://fonts.googleapis.com/css?family=Unica+One';
+
+body {
+    font-family: 'Unica One', sans-serif !important;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h1,
+h2,h4 {
+    margin: 25px !important;
+}
+
+table {
+    border-radius: 5;
+    border-spacing: 0;
+    font-size: 14px;
+    font-weight: 300;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    background-color: #bbbbbb;
+    padding: 7px;
+    color: black;
+    text-align: left;
+}
+
+td {
+    padding: 7px;
+    vertical-align: top;
+    text-align: left;
+}
+
+tr {
+    line-height: 20px;
+}
+
+tr.nobg {
+    background-color: #ffffff;
+    color: black;
+}
+
+tr.bg {
+    background-color: #eeeeee;
+    color: black;
+}
