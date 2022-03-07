@@ -121,8 +121,7 @@ div.deletekey:hover {
     float: left;
     height: 50px;
     margin-bottom: 20px;
-    /*background-color: rgba(43, 89, 125, 0.9);*/
-    background: linear-gradient(to right, #058b8c, rgba(43, 89, 125, 0.9));
+    background: linear-gradient(to right, #058b8c, #035353);
     width: 100%;
     position: fixed;
     top: 0;
