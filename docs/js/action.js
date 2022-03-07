@@ -53,53 +53,9 @@ let setObjectGallery = () => {
 };
 
 let loadTerm = () => {
-    let query = "SELECT * WHERE { samian:loc_ds_1000955 ?p ?o. }";
+    let query = "SELECT * WHERE { ?item rdfs:label ?label. FILTER (?item = samian:loc_ds_1000955) }";
     RDF4J.query(query, visData);
 }
-
-
-/*$.ajax({
-        type: "GET",
-        url: "http://localhost:8080/nopi/rest/objects/" + findGetParameter("id"),
-        async: false,
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-        },
-        success: function(data) {
-            termObject = data;
-            sparql =
-                "SELECT DISTINCT ?classificationNumber ?comment ?typLabel ?bookLabel WHERE { " + findGetParameter("id") +
-                " ars:is_stated_by ?s. ?s a ars:Statement. ?s rdfs:label ?l. ?s rdfs:comment ?comment. ?s crm:P2_has_type ?type. ?type ars:classification-number ?classificationNumber. ?type rdf:type ?tr. ?tr rdfs:label ?typLabel. ?tr ars:hasOriginIn ?b. ?b rdfs:label ?bookLabel. }"
-            $.ajax({
-                type: 'POST',
-                url: RDF4J.SPARQLQUERY,
-                data: {
-                    query: encodeURIComponent(RDF4J.PREFIXES + sparql),
-                    out: "json"
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.error(errorThrown);
-                },
-                success: function(sparql1) {
-                    let bindings = sparql1.results.bindings;
-                    objectStatement = Object.assign({}, bindings);
-                    $.ajax({
-                        type: "GET",
-                        url: API.BASE + "/features?type=feature&q=" + findGetParameter("id"),
-                        async: false,
-                        error: function(jqXHR, textStatus, errorThrown) {},
-                        success: function(data2) {
-                            console.log(data2);
-                            featureObject = data2;
-
-                        }
-                    });
-                    visData();
-                }
-            });
-        }
-    });
-}*/
 
 let ObjectSize = (obj) => {
     var size = 0,
@@ -220,7 +176,7 @@ let setScanMetadata = (data, json_url, divstr) => {
 };
 
 let visData = (termObject) => {
-    termObject = termObject.results.bindings;
+    termObject = termObject.results.bindings[0];
     console.log(termObject);
     // vars
     let lang = "";
@@ -252,7 +208,7 @@ let visData = (termObject) => {
 
     // object
     searchResultsDiv += "<div class='box-resultlist-eighty' id='" + termObject.id + "'>";
-    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'> " + termObject.name + "</h1>";
+    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'> " + termObject['label']['value'] + "</h1>";
 
     // add primary Image
     searchResultsDiv += '<div id="objectdata_images">';
@@ -279,8 +235,8 @@ let visData = (termObject) => {
     // add object metadata
     searchResultsDiv += '<div id="object_technicaldata"></div>';
     objectdataTechnicalDetailsDiv += '<h3>Metadata</h3>';
-    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-uuid" + "'><li class='list-group-item panel-item'><span class='badge'>" + "URI" + "</span>" + "http://data.archaeology.link/data/navisone/obj_" + termObject.id + "</li></ul>";
-    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-label" + "'><li class='list-group-item panel-item'><span class='badge'>" + "label" + "</span>" + termObject.name + "</li></ul>";
+    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-uuid" + "'><li class='list-group-item panel-item'><span class='badge'>" + "URI" + "</span>" + termObject['item']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
+    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-label" + "'><li class='list-group-item panel-item'><span class='badge'>" + "label" + "</span>" + termObject['label']['value'] + "</li></ul>";
     let str_origin = "Samian Research";
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-origin" + "'><li class='list-group-item panel-item'><span class='badge'>" + "origin" + "</span>" + str_origin + "</li></ul>";
 
