@@ -3,9 +3,10 @@ let RDF4J = {};
 RDF4J.SPARQLQUERY = "https://java-dev.rgzm.de/rdf4j-server/repositories/samian-lod";
 
 RDF4J.PREFIXES =
-    "PREFIX samian: <http://data.archaeology.link/data/samian/> ";
+    "PREFIX samian: <http://data.archaeology.link/data/samian/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX dc: <http://purl.org/dc/elements/1.1/> PREFIX lado: <http://archaeology.link/ontology#> PREFIX geosparql: <http://www.opengis.net/ont/geosparql#> PREFIX prov: <http://www.w3.org/ns/prov#> ";
 
 RDF4J.query = (sparql, callback) => {
+    console.log(sparql);
     setTimeout(function() {
         //console.log(sparql);
         $.ajax({
@@ -32,6 +33,7 @@ RDF4J.query = (sparql, callback) => {
                         var tblTxt = "";
                         if (bindings[item][vars[varstr]].type === "uri") {
                             var val = bindings[item][vars[varstr]].value;
+                            val = val.replace("http://archaeology.link/ontology#", "lado:");
                             val = val.replace("http://data.archaeology.link/data/samian/", "samian:");
                             val = val.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
                             val = val.replace("http://www.w3.org/2002/07/owl#", "owl:");
