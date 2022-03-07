@@ -252,7 +252,7 @@ let visData = (termObject) => {
 
     // object
     searchResultsDiv += "<div class='box-resultlist-eighty' id='" + termObject.id + "'>";
-    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'> " + termObject.name + " <i>(ID: " + termObject.id + ")</i></h1>";
+    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'> " + termObject.name + "</h1>";
 
     // add primary Image
     searchResultsDiv += '<div id="objectdata_images">';
@@ -263,7 +263,7 @@ let visData = (termObject) => {
 
     // add Object Data
     searchResultsDiv += '<div id="object_details"></div>';
-    objectdataDetailsDiv += '<br><h3><center><img src="logo_white.png" height="80"></center></h3>';
+    objectdataDetailsDiv += '<br><h3><center><img src="al_circle_icon.png" height="100">&nbsp;&nbsp;&nbsp;<img src="losm_circle_icon.png" height="100"></center></h3>';
     objectdataDetailsDiv += '<h3>Object Data</h3>';
     let tmp = "";
     //if (termObject.keywords.objecttype.length == 0) {
