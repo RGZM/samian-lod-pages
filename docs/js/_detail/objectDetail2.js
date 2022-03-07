@@ -53,7 +53,12 @@ let setObjectGallery = () => {
 };
 
 let loadTerm = () => {
-    $.ajax({
+    let query = "SELECT * WHERE { samian:loc_ds_1000955 ?p ?o. }";
+    RDF4J.query(query, visData);
+}
+
+
+/*$.ajax({
         type: "GET",
         url: "http://localhost:8080/nopi/rest/objects/" + findGetParameter("id"),
         async: false,
@@ -78,7 +83,7 @@ let loadTerm = () => {
                 success: function(sparql1) {
                     let bindings = sparql1.results.bindings;
                     objectStatement = Object.assign({}, bindings);
-                    /*$.ajax({
+                    $.ajax({
                         type: "GET",
                         url: API.BASE + "/features?type=feature&q=" + findGetParameter("id"),
                         async: false,
@@ -88,13 +93,13 @@ let loadTerm = () => {
                             featureObject = data2;
 
                         }
-                    });*/
+                    });
                     visData();
                 }
             });
         }
     });
-}
+}*/
 
 let ObjectSize = (obj) => {
     var size = 0,
@@ -214,7 +219,8 @@ let setScanMetadata = (data, json_url, divstr) => {
     $("#object_technicaldata").html(objectdataTechnicalDetailsDiv);
 };
 
-let visData = () => {
+let visData = (termObject) => {
+    termObject = termObject.results.bindings;
     console.log(termObject);
     // vars
     let lang = "";
@@ -251,9 +257,7 @@ let visData = () => {
     // add primary Image
     searchResultsDiv += '<div id="objectdata_images">';
     objectdataImagesDiv += '<div id="objects_gallery">';
-    let images = termObject.images;
-    objectdataImagesDiv += '<a class="group1" href="img/' + termObject.image_primary.filename + '" title="' + "xyz" +
-        '"><div class="box-thumbnail-div box-thumbnail-div3"><img src="img/' + termObject.image_primary.filename + '" class="thumbnail a2 thumbnail2"></div></a>';
+    objectdataImagesDiv += '<div class="box-thumbnail-div box-thumbnail-div3"></div>';
     objectdataImagesDiv += '</div>';
     searchResultsDiv += "</div>";
 
@@ -262,92 +266,15 @@ let visData = () => {
     objectdataDetailsDiv += '<br><h3><center><img src="logo_white.png" height="80"></center></h3>';
     objectdataDetailsDiv += '<h3>Object Data</h3>';
     let tmp = "";
-    if (termObject.keywords.objecttype.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-material" + "'><li class='list-group-item panel-item'><span class='badge'>" + "material" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
+    //if (termObject.keywords.objecttype.length == 0) {
+    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-material" + "'><li class='list-group-item panel-item'><span class='badge'>" + "material" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
+    /*} else {
         for (item in termObject.keywords.objecttype) {
             tmp = tmp + termObject.keywords.objecttype[item].en + ", ";
         }
         tmp = tmp.substring(0, tmp.length - 2);
         objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-type" + "'><li class='list-group-item panel-item'><span class='badge'>" + "object type" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.keywords.material.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-material" + "'><li class='list-group-item panel-item'><span class='badge'>" + "material" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        for (item in termObject.keywords.material) {
-            tmp = tmp + termObject.keywords.material[item].en + ", ";
-        }
-        tmp = tmp.substring(0, tmp.length - 2);
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-material" + "'><li class='list-group-item panel-item'><span class='badge'>" + "material" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.keywords.technique.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-technique" + "'><li class='list-group-item panel-item'><span class='badge'>" + "technique" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        for (item in termObject.keywords.technique) {
-            tmp = tmp + termObject.keywords.technique[item].en + ", ";
-        }
-        tmp = tmp.substring(0, tmp.length - 2);
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-technique" + "'><li class='list-group-item panel-item'><span class='badge'>" + "technique" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.keywords.culture.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-culture" + "'><li class='list-group-item panel-item'><span class='badge'>" + "culture" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        for (item in termObject.keywords.culture) {
-            tmp = tmp + termObject.keywords.culture[item].en + ", ";
-        }
-        tmp = tmp.substring(0, tmp.length - 2);
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-culture" + "'><li class='list-group-item panel-item'><span class='badge'>" + "culture" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    tmp = tmp + termObject.metadata.country.en + ", " + termObject.metadata.loc.en + ", " + termObject.metadata.poi.en;
-    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-clp" + "'><li class='list-group-item panel-item'><span class='badge'>" + "country / location / POI" + "</span>" + tmp + "</li></ul>";
-    tmp = "";
-    tmp = tmp + termObject.metadata.height + ", " + termObject.metadata.width + ", " + termObject.metadata.length;
-    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-hwl" + "'><li class='list-group-item panel-item'><span class='badge'>" + "height / width / length" + "</span>" + tmp + "</li></ul>";
-    tmp = "";
-    if (termObject.metadata.depository.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-depository" + "'><li class='list-group-item panel-item'><span class='badge'>" + "depository" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        tmp = tmp + termObject.metadata.depository.en + ", " + termObject.metadata.depository_detail;
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-depository" + "'><li class='list-group-item panel-item'><span class='badge'>" + "depository" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.metadata.archive.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-archive" + "'><li class='list-group-item panel-item'><span class='badge'>" + "archive" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        tmp = tmp + termObject.metadata.archive.en + ", " + termObject.metadata.archive_detail;
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-archive" + "'><li class='list-group-item panel-item'><span class='badge'>" + "archive" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.metadata.discovery_year == null) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-discoveryyear" + "'><li class='list-group-item panel-item'><span class='badge'>" + "discovery year" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        tmp = tmp + termObject.metadata.discovery_year + ", " + termObject.metadata.archive_detail;
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-discoveryyear" + "'><li class='list-group-item panel-item'><span class='badge'>" + "discover year" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.keywords.person.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-person" + "'><li class='list-group-item panel-item'><span class='badge'>" + "person" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        for (item in termObject.keywords.person) {
-            tmp = tmp + termObject.keywords.person[item].en + ", ";
-        }
-        tmp = tmp.substring(0, tmp.length - 2);
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-person" + "'><li class='list-group-item panel-item'><span class='badge'>" + "person" + "</span>" + tmp + "</li></ul>";
-    }
-    tmp = "";
-    if (termObject.keywords.originplace.length == 0) {
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-originplace" + "'><li class='list-group-item panel-item'><span class='badge'>" + "originplace" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        for (item in termObject.keywords.originplace) {
-            tmp = tmp + termObject.keywords.originplace[item].en + ", ";
-        }
-        tmp = tmp.substring(0, tmp.length - 2);
-        objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-originplace" + "'><li class='list-group-item panel-item'><span class='badge'>" + "originplace" + "</span>" + tmp + "</li></ul>";
-    }
+    }*/
 
     // add object metadata
     searchResultsDiv += '<div id="object_technicaldata"></div>';
