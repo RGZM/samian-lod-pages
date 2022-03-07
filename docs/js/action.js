@@ -53,7 +53,7 @@ let setObjectGallery = () => {
 };
 
 let loadTerm = () => {
-    let query = "SELECT * WHERE { ?item rdfs:label ?label. FILTER (?item = samian:loc_ds_1000955) }";
+    let query = "SELECT * WHERE { ?item rdfs:label ?label. FILTER (?item = samian:" + findGetParameter("resource") + ") }";
     RDF4J.query(query, visData);
 }
 
