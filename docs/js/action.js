@@ -286,9 +286,9 @@ let visData = (termObject) => {
 
     // add project metadata
     objectdataTechnicalDetailsDiv += '<h3>Project Data</h3>';
-    let name = "NAVIS.one, originally " + str_origin;
+    let name = "Linked Open Samian Ware, originally " + str_origin;
     let name_wd = "https://www.wikidata.org/entity/xxx";
-    let funding = "RGZM, originally European Union";
+    let funding = "RGZM, originally ...";
     let funding_wd = "xxx";
     funding_wd = funding_wd.replace("/wiki/", "/entity/");
     let appl1 = "RGZM";
