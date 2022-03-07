@@ -16,7 +16,7 @@ body {
 
 h1 {
     font-family: 'Cairo', sans-serif !important;
-    color: rgba(43, 89, 125, 1) !important;
+    color: #058b8c !important;
     font-weight: 600;
 }
 
@@ -277,7 +277,7 @@ div.deletekey:hover {
     font-weight: 600;
     font-size: 24px;
     font-variant: small-caps !important;
-    color: rgba(43, 89, 125, 1) !important;
+    color: #058b8c !important;
 }
 
 .featuredatali {

@@ -281,16 +281,7 @@ let visData = (termObject) => {
     objectdataTechnicalDetailsDiv += '<h3>Metadata</h3>';
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-uuid" + "'><li class='list-group-item panel-item'><span class='badge'>" + "URI" + "</span>" + "http://data.archaeology.link/data/navisone/obj_" + termObject.id + "</li></ul>";
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-label" + "'><li class='list-group-item panel-item'><span class='badge'>" + "label" + "</span>" + termObject.name + "</li></ul>";
-    let str_origin = "";
-    if (termObject.id < 200000) {
-        str_origin = "NAVIS"
-    } else if (termObject.id > 200000 && termObject.id < 300000) {
-        str_origin = "NAVIS II"
-    } else if (termObject.id > 300000 && termObject.id < 400000) {
-        str_origin = "NAVIS III"
-    } else if (termObject.id > 400000 && termObject.id < 500000) {
-        str_origin = "Alta"
-    }
+    let str_origin = "Samian Research";
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-origin" + "'><li class='list-group-item panel-item'><span class='badge'>" + "origin" + "</span>" + str_origin + "</li></ul>";
 
     // add project metadata
