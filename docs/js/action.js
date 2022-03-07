@@ -55,7 +55,7 @@ let setObjectGallery = () => {
 let loadTerm = () => {
     let query = "null";
     if (findGetParameter("resource").indexOf("loc_ds") !== -1) {
-        query = "SELECT * WHERE { ?item rdfs:label ?label. FILTER (?item = samian:" + findGetParameter("resource") + ") }";
+        query = "SELECT ?item ?label (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?identifier ?wikidata ?pleiades ?ancientName ?geom ?lastupdate WHERE { ?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item dc:identifier ?identifier. ?item lado:exactMatch ?wikidata. ?item geosparql:hasGeometry ?geom_bn. ?geom_bn geosparql:asWKT ?geom. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. bind('undefined' AS ?pleiades) bind('undefined' AS ?ancientName) OPTIONAL {?item lado:pleiadesID ?pleiades.} OPTIONAL {?item lado:ancientName ?ancientName.} FILTER (?item = samian:" + findGetParameter("resource") + ") } GROUP BY ?item ?label ?identifier ?typ ?wikidata ?pleiades ?ancientName ?geom ?lastupdate";
     }
     if (query !== "null") {
         RDF4J.query(query, visData);
