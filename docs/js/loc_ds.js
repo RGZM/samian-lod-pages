@@ -50,7 +50,7 @@ let loadMap = (id, wkt, type) => {
             [bounds[1], bounds[0]],
             [bounds[3], bounds[2]]
         ]);
-        geommap.setZoom(4);
+        geommap.setZoom(5);
     } else {
         let geojson = Terraformer.WKT.parse("POINT(0 50)");
         let bounds = geojson.bbox();
