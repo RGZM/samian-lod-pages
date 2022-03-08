@@ -1,4 +1,4 @@
-let loc_ds = (termObject) => {
+let loc_pc = (termObject) => {
 
     // object
     searchResultsDiv += "<div class='box-resultlist-eighty' id='" + termObject['item']['value'] + "'>";
@@ -44,17 +44,8 @@ let loc_ds = (termObject) => {
     searchResultsDiv += '<div id="object_technicaldata"></div>';
     objectdataTechnicalDetailsDiv += '<h3>Objectdata</h3>';
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-wikidata" + "'><li class='list-group-item panel-item'><span class='badge'>" + "Wikidata ID" + "</span>" + termObject['wikidata']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
-    if (termObject['pleiades']['value'] == "undefined") {
-        objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-pleiades" + "'><li class='list-group-item panel-item'><span class='badge'>" + "Pleiades ID" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-pleiades" + "'><li class='list-group-item panel-item'><span class='badge'>" + "Pleiades ID" + "</span>" + termObject['pleiades']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
-    }
-    if (termObject['ancientName']['value'] == "undefined") {
-        objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-ancientname" + "'><li class='list-group-item panel-item'><span class='badge'>" + "ancient name" + "</span>" + "<span class='label label-default font12'>not defined</span>" + "</li></ul>";
-    } else {
-        objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-ancientname" + "'><li class='list-group-item panel-item'><span class='badge'>" + "ancient name" + "</span>" + termObject['ancientName']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
-    }
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-geom" + "'><li class='list-group-item panel-item'><span class='badge'>" + "geometry (point)" + "</span>" + termObject['geom']['value'] + "</li></ul>";
+    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-kilnregion" + "'><li class='list-group-item panel-item'><span class='badge'>" + "kilnregion" + "</span>" + termObject['geom']['value'] + "</li></ul>";
 
     $("#content_kacheln").html(searchResultsDiv);
     $("#objectdata_images").html(objectdataImagesDiv);
