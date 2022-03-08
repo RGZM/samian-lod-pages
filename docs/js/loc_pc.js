@@ -45,7 +45,7 @@ let loc_pc = (termObject) => {
     objectdataTechnicalDetailsDiv += '<h3>Objectdata</h3>';
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-wikidata" + "'><li class='list-group-item panel-item'><span class='badge'>" + "Wikidata ID" + "</span>" + termObject['wikidata']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
     objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-geom" + "'><li class='list-group-item panel-item'><span class='badge'>" + "geometry (point)" + "</span>" + termObject['geom']['value'] + "</li></ul>";
-    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-kilnregion" + "'><li class='list-group-item panel-item'><span class='badge'>" + "kilnregion" + "</span>" + termObject['geom']['value'] + "</li></ul>";
+    objectdataTechnicalDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-kilnregion" + "'><li class='list-group-item panel-item'><span class='badge'>" + "kilnregion" + "</span>" + termObject['kilnregion']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "&nbsp;&rarr;&nbsp;(" + termObject['kilnregion_label']['value'].replace("@en", "") + ")</li></ul>";
 
     $("#content_kacheln").html(searchResultsDiv);
     $("#objectdata_images").html(objectdataImagesDiv);
