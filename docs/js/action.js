@@ -142,7 +142,8 @@ let objectdataLiteratureDiv = "";
 let visData = (termObject) => {
     termObject = termObject.results.bindings[0];
     console.log(termObject);
-    if (typeof termObject === 'undefined') {
+    console.log(typeof termObject['item']);
+    if (typeof termObject['item'] === 'undefined') {
         error404();
     } else {
         if (termObject['item']['value'].indexOf("loc_ds") !== -1) {
