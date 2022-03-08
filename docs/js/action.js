@@ -117,6 +117,9 @@ let loadTerm = () => {
     if (findGetParameter("resource").indexOf("loc_pc") !== -1) {
         query = "SELECT ?item ?label (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?identifier ?wikidata ?kilnregion ?kilnregion_label ?geom ?lastupdate WHERE { ?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item dc:identifier ?identifier. ?item lado:exactMatch ?wikidata. ?item lado:clusteredAs ?kilnregion. ?kilnregion rdfs:label ?kilnregion_label. ?item geosparql:hasGeometry ?geom_bn. ?geom_bn geosparql:asWKT ?geom. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" + findGetParameter("resource") + ") } GROUP BY ?item ?label ?identifier ?typ ?wikidata ?kilnregion ?kilnregion_label ?geom ?lastupdate";
     }
+    if (findGetParameter("resource").indexOf("loc_kr") !== -1) {
+        query = "SELECT ?item ?label (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?identifier ?wikidata ?geom ?lastupdate WHERE {?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item dc:identifier ?identifier. ?item lado:exactMatch ?wikidata. ?item lado:clusteredArea ?geom_bn. ?geom_bn geosparql:asWKT ?geom. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" + findGetParameter("resource") + ") } GROUP BY ?item ?label ?identifier ?typ ?wikidata ?geom ?lastupdate";
+    }
     if (query !== "null") {
         RDF4J.query(query, visData);
     } else {
@@ -146,6 +149,8 @@ let visData = (termObject) => {
             loc_ds(termObject);
         } else if (termObject['item']['value'].indexOf("loc_pc") !== -1) {
             loc_pc(termObject);
+        } else if (termObject['item']['value'].indexOf("loc_kr") !== -1) {
+            loc_kr(termObject);
         } else {
 
         }
