@@ -13,6 +13,21 @@ body {
     font-family: "Cairo", sans-serif !important;
 }
 
+#map-poi {
+    float: left;
+    width: 700px;
+    height: 700px;
+    background-color: #058b8c !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border: 1px dashed #058b8c !important;
+    z-index: 1000;
+}
+
 .label-green {
     background-color: #2b597d;
 }

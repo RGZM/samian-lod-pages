@@ -1,3 +1,67 @@
+let loadMap = (id, wkt, type) => {
+    console.log(wkt);
+    let geommap = L.map(id).setView([0, 0], 1);
+    /*L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        subdomains: 'abcd',
+        minZoom: 1,
+        maxZoom: 16,
+        ext: 'jpg'
+    }).addTo(geommap);*/
+    L.tileLayer.grayscale('http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri ',
+        minZoom: 1,
+        maxZoom: 16,
+        ext: 'jpg'
+    }).addTo(geommap);
+    L.geoJSON(rivers, {
+        style: function(feature) {
+            return {
+                color: "#326690",
+                weight: 1
+            };
+        }
+    }).addTo(geommap);
+    L.geoJSON(canals, {
+        style: function(feature) {
+            return {
+                color: "#326690",
+                weight: 1
+            };
+        }
+    }).addTo(geommap);
+    if (type != 0) {
+        let geojson = Terraformer.WKT.parse(wkt);
+        let geojsonMarkerOptions = {
+            radius: 5,
+            fillColor: "#d9534f",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 1.0
+        };
+        let layer = L.geoJson(geojson, {
+            pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(geommap);
+        let bounds = geojson.bbox();
+        geommap.fitBounds([
+            [bounds[1], bounds[0]],
+            [bounds[3], bounds[2]]
+        ]);
+        geommap.setZoom(4);
+    } else {
+        let geojson = Terraformer.WKT.parse("POINT(0 50)");
+        let bounds = geojson.bbox();
+        geommap.fitBounds([
+            [bounds[1], bounds[0]],
+            [bounds[3], bounds[2]]
+        ]);
+        geommap.setZoom(2);
+    }
+};
+
 let loc_ds = (termObject) => {
 
     // object
@@ -5,11 +69,12 @@ let loc_ds = (termObject) => {
     searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'> " + termObject['label']['value'] + "</h1>";
 
     // add map / image
-    searchResultsDiv += '<div id="objectdata_images">';
+    searchResultsDiv += "<div id='map-poi'></div>";
+    //searchResultsDiv += '<div id="objectdata_images">';
     /*objectdataImagesDiv += '<div id="objects_gallery">';
     objectdataImagesDiv += '<div class="box-thumbnail-div box-thumbnail-div3"></div>';
     objectdataImagesDiv += '</div>';*/
-    searchResultsDiv += "</div>";
+    //searchResultsDiv += "</div>";
 
     // add Object Data
     searchResultsDiv += '<div id="object_details"></div>';
@@ -64,4 +129,17 @@ let loc_ds = (termObject) => {
     $("#objectdata_images").html(objectdataImagesDiv);
     $("#object_details").html(objectdataDetailsDiv);
     $("#object_technicaldata").html(objectdataTechnicalDetailsDiv);
+
+    // load map
+    //if (termObject.metadata.geom) {
+    //loadMap("map-poi", termObject.metadata.geom, -1);
+    //} else {
+    //let element = document.getElementById("map-poi");
+    //element.parentNode.removeChild(element);
+    loadMap("map-poi", termObject['geom']['value'].replace("<http://www.opengis.net/def/crs/EPSG/0/4326> ", ""), -1);
+    //}
+    //setObjectGallery();
+    //$('body,html').animate({
+    //    scrollTop: 0
+    //}, 800);
 };
