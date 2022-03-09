@@ -9,7 +9,7 @@ let loc_ds = (termObject) => {
 
     // add Object Data
     searchResultsDiv += '<div id="object_details"></div>';
-    objectdataDetailsDiv += '<br><h3><center><img src="al_circle_icon.png" height="80">&nbsp;&nbsp;&nbsp;<img src="losm_circle_icon.png" height="80"></center></h3>';
+    objectdataDetailsDiv += '<br><h3><center><img src="al_circle_icon.png" height="80"></center></h3>';
     objectdataDetailsDiv += '<h3>Metadata</h3>';
     objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-uuid" + "'><li class='list-group-item panel-item'><span class='badge'>" + "URI / permalink" + "</span>" + termObject['item']['value'].replace("samian:", "http://data.archaeology.link/data/samian/") + "</li></ul>";
     objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "object-label" + "'><li class='list-group-item panel-item'><span class='badge'>" + "label" + "</span>" + termObject['label']['value'] + "</li></ul>";
