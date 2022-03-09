@@ -26,18 +26,15 @@ let loc_ds = (termObject) => {
     let name_link1 = "https://github.com/archaeolink/samian-lod-pages";
     let name_link2 = "https://www.rgzm.de/samian";
     let funding = "RGZM, University of Reading, University of Leeds, Ceramica-Stiftung";
-    let appl1 = "RGZM";
-    let appl1_wd = "xxx";
-    appl1_wd = appl1_wd.replace("/wiki/", "/entity/");
-    let start = "19..";
-    let end = "19..";
+    let contact = "Department of Scientific IT at RGZM, Mainz (Dr. Allard Mees, Florian Thiery M.Sc.)";
+    let date = "since 1963";
     objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-1" + "'><li class='list-group-item panel-item'><span class='badge'>" + "project" + "</span>" + "<a href='" + name_link1 + "' target='_blank'>" + name1 + "</a>" +
         " <a href='" + name_link2 + "' target='_blank'>" + name2 + "</a>" + "</li></ul>";
     objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-2" + "'><li class='list-group-item panel-item'><span class='badge'>" + "funding" + "</span>" + "" + funding +
         "" + "</li></ul>";
-    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-3" + "'><li class='list-group-item panel-item'><span class='badge'>" + "applicant" + "</span>" + "<a href='" + appl1_wd + "' target='_blank'>" + appl1 + "</a>" +
+    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-3" + "'><li class='list-group-item panel-item'><span class='badge'>" + "contact" + "</span>" + "" + contact + "" +
         "</li></ul>";
-    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-4" + "'><li class='list-group-item panel-item'><span class='badge'>" + "duration" + "</span>" + "<i>" + start + " - " + end + "</i>" + "</li></ul>";
+    objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-4" + "'><li class='list-group-item panel-item'><span class='badge'>" + "duration" + "</span>" + "<i>" + date + "</i>" + "</li></ul>";
     objectdataDetailsDiv += '</div>';
 
     // add object metadata
