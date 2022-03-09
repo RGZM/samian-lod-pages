@@ -26,7 +26,7 @@ let loc_ds = (termObject) => {
     let name_link1 = "https://github.com/archaeolink/samian-lod-pages";
     let name_link2 = "https://www.rgzm.de/samian";
     let funding = "RGZM, University of Reading, University of Leeds, Ceramica-Stiftung";
-    let contact = "Department of Scientific IT at RGZM, Mainz (Dr. Allard Mees, Florian Thiery M.Sc.)";
+    let contact = "Department of Scientific IT, RGZM, Mainz (Dr. Allard Mees, Florian Thiery M.Sc.)";
     let date = "since 1963";
     objectdataDetailsDiv += "<ul class='list-group panel-item2' id='" + "project-1" + "'><li class='list-group-item panel-item'><span class='badge'>" + "project" + "</span>" + "<a href='" + name_link1 + "' target='_blank'>" + name1 + "</a>" +
         " <a href='" + name_link2 + "' target='_blank'>" + name2 + "</a>" + "</li></ul>";
