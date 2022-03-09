@@ -2,7 +2,7 @@ let pf = (termObject) => {
 
     // object
     searchResultsDiv += "<div class='box-resultlist-eighty' id='" + termObject['item']['value'] + "'>";
-    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'>Potform " + termObject['label']['value'].replace("@en", "") + "</h1>";
+    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'>Potform: " + termObject['label']['value'].replace("@en", "") + "</h1>";
 
     // add map / image
     searchResultsDiv += "<div id='map-poi' style='display: flex;justify-content: center;align-items: center;'>";

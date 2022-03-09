@@ -2,7 +2,7 @@ let loc_kr = (termObject) => {
 
     // object
     searchResultsDiv += "<div class='box-resultlist-eighty' id='" + termObject['item']['value'] + "'>";
-    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'>Kilnregion " + termObject['label']['value'].replace("@en", "") + "</h1>";
+    searchResultsDiv += "<h1 style='text-align:center;padding-bottom:10px;'>Kilnregion: " + termObject['label']['value'].replace("@en", "") + "</h1>";
 
     // add map / image
     searchResultsDiv += "<div id='map-poi'></div>";
