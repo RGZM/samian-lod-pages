@@ -9,6 +9,11 @@ let ic = (termObject) => {
     termObject["label"]["value"].replace("@en", "") +
     "</h1>";
 
+  // add map / image
+  searchResultsDiv +=
+    "<div id='map-poi' style='display: flex;justify-content: center;align-items: center;'>";
+  searchResultsDiv += "</div>";
+
   // add Object Data
   searchResultsDiv += '<div id="object_details"></div>';
   objectdataDetailsDiv +=
