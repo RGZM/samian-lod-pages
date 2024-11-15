@@ -144,11 +144,16 @@ let loadTerm = () => {
       ") } GROUP BY ?item ?label ?identifier ?typ ?image ?lastupdate";
   }
   if (findGetParameter("resource").indexOf("ic_") !== -1) {
-    //query = "SELECT ?item ?label (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?identifier ?image ?lastupdate WHERE { ?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item dc:identifier ?identifier. OPTIONAL {?item lado:hasImage ?image.} ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" + findGetParameter("resource") + ") } GROUP BY ?item ?label ?identifier ?typ ?image ?lastupdate"
     query =
       "SELECT ?item (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?label ?number ?kilnsite ?shape ?identifier ?lastupdate WHERE { ?item rdf:type ?type. ?item amt:instanceOf ?typ. ?item rdfs:label ?label. ?item lado:number ?number. ?item lado:hasKilnsiteString ?kilnsite. ?item lado:representedByString ?shape. ?item dc:identifier ?identifier. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" +
       findGetParameter("resource") +
       ") } GROUP BY ?item ?label ?typ ?number ?kilnsite ?shape ?identifier ?lastupdate";
+  }
+  if (findGetParameter("resource").indexOf("ac_") !== -1) {
+    query =
+      "SELECT ?item (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?label ?name ?identifier ?lastupdate WHERE { ?item rdf:type ?type. ?item rdf:type ?typ. ?item rdfs:label ?label. ?item lado:name ?name. ?item dc:identifier ?identifier. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" +
+      findGetParameter("resource") +
+      ") } GROUP BY ?item ?label ?name ?identifier ?typ ?lastupdate";
   }
   if (query !== "null") {
     RDF4J.query(query, visData);
@@ -185,6 +190,8 @@ let visData = (termObject) => {
     } else if (termObject["item"]["value"].indexOf("pf_") !== -1) {
       pf(termObject);
     } else if (termObject["item"]["value"].indexOf("ic_") !== -1) {
+      ic(termObject);
+    } else if (termObject["item"]["value"].indexOf("ac_") !== -1) {
       ic(termObject);
     } else {
     }
