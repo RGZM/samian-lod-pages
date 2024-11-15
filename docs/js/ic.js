@@ -42,7 +42,7 @@ let ic = (termObject) => {
     "</span>" +
     str_origin +
     "</li></ul>";
-  let types = termObject["type"]["value"].replaceAll(
+  let types = termObject["types"]["value"].replaceAll(
     "http://archaeology.link/ontology#",
     "lado:"
   );
