@@ -141,6 +141,63 @@ let ic = (termObject) => {
   // add object metadata
   searchResultsDiv += '<div id="object_technicaldata"></div>';
   objectdataTechnicalDetailsDiv += "<h3>Objectdata</h3>";
+  if (termObject["number"]["value"] == "undefined") {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-number" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "number" +
+      "</span>" +
+      "<span class='label label-default font12'>not defined</span>" +
+      "</li></ul>";
+  } else {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-number" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "number" +
+      "</span>" +
+      termObject["number"]["value"] +
+      "</li></ul>";
+  }
+  if (termObject["kilnsite"]["value"] == "undefined") {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-kilnsite" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "kilnsite" +
+      "</span>" +
+      "<span class='label label-default font12'>not defined</span>" +
+      "</li></ul>";
+  } else {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-kilnsite" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "kilnsite" +
+      "</span>" +
+      termObject["kilnsite"]["value"] +
+      "</li></ul>";
+  }
+  if (termObject["shape"]["value"] == "undefined") {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-shape" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "shape" +
+      "</span>" +
+      "<span class='label label-default font12'>not defined</span>" +
+      "</li></ul>";
+  } else {
+    objectdataTechnicalDetailsDiv +=
+      "<ul class='list-group panel-item2' id='" +
+      "object-shape" +
+      "'><li class='list-group-item panel-item'><span class='badge'>" +
+      "shape" +
+      "</span>" +
+      termObject["shape"]["value"] +
+      "</li></ul>";
+  }
 
   $("#content_kacheln").html(searchResultsDiv);
   $("#objectdata_images").html(objectdataImagesDiv);
