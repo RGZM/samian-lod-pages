@@ -184,6 +184,8 @@ let visData = (termObject) => {
       loc_kr(termObject);
     } else if (termObject["item"]["value"].indexOf("pf_") !== -1) {
       pf(termObject);
+    } else if (termObject["item"]["value"].indexOf("ic_") !== -1) {
+      ic(termObject);
     } else {
     }
   }
