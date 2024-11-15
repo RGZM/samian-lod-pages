@@ -146,7 +146,7 @@ let loadTerm = () => {
   if (findGetParameter("resource").indexOf("ic_") !== -1) {
     //query = "SELECT ?item ?label (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?identifier ?image ?lastupdate WHERE { ?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item dc:identifier ?identifier. OPTIONAL {?item lado:hasImage ?image.} ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" + findGetParameter("resource") + ") } GROUP BY ?item ?label ?identifier ?typ ?image ?lastupdate"
     query =
-      "SELECT ?item (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?label ?number ?kilnsite ?shape ?identifier ?lastupdate WHERE { ?item rdf:type ?type. ?item rdfs:label ?label. ?item lado:number ?number. ?item lado:hasKilnsiteString ?kilnsite. ?item lado:representedByString ?shape. ?item dc:identifier ?identifier. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" +
+      "SELECT ?item (GROUP_CONCAT(DISTINCT ?type; SEPARATOR = ',') AS ?types) ?typ ?label ?number ?kilnsite ?shape ?identifier ?lastupdate WHERE { ?item rdf:type ?type. ?item lado:hasType ?typ. ?item rdfs:label ?label. ?item lado:number ?number. ?item lado:hasKilnsiteString ?kilnsite. ?item lado:representedByString ?shape. ?item dc:identifier ?identifier. ?item prov:wasGeneratedBy ?activity_bn. ?activity_bn prov:endedAtTime ?lastupdate. FILTER (?item = samian:" +
       findGetParameter("resource") +
       ") } GROUP BY ?item ?label ?number ?kilnsite ?shape ?identifier ?lastupdate";
   }
