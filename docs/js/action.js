@@ -192,7 +192,7 @@ let visData = (termObject) => {
     } else if (termObject["item"]["value"].indexOf("ic_") !== -1) {
       ic(termObject);
     } else if (termObject["item"]["value"].indexOf("ac_") !== -1) {
-      ic(termObject);
+      ac(termObject);
     } else {
     }
   }
