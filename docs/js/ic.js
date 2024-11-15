@@ -5,7 +5,7 @@ let ic = (termObject) => {
     termObject["item"]["value"] +
     "'>";
   searchResultsDiv +=
-    "<h1 style='text-align:center;padding-bottom:10px;'>Potform: " +
+    "<h1 style='text-align:center;padding-bottom:10px;'>Information Carrier: " +
     termObject["label"]["value"].replace("@en", "") +
     "</h1>";
 
